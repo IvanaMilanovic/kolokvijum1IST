@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<artikal>
+    <naziv sifra="">
+
+    </naziv>
+<datumIzrade>
+    <dan>
+
+    </dan>
+    <mesec>
+
+    </mesec>
+    <godina>
+
+    </godina>
+</datumIzrade>
+    <cena tip="">
+
+    </cena>
+    <kompanijaProdavca>
+        <imeKompanije>
+
+        </imeKompanije>
+        <adresa>
+
+        </adresa>
+    </kompanijaProdavca>
+    <email tip="">
+
+    </email>
+</artikal>
