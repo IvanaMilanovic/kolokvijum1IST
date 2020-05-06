@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns="http://www.w3schools.com"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.w3schools.com"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <xs:simpleType name="nazivRes"  >
+        <xs:restriction base="xs:string"    >
+            <xs:minLength value="3">
+                
+            </xs:minLength>
+            <xs:maxLength value="30"></xs:maxLength>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <xs:simpleType name="emailRes">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^A-Za-z0-9]{5,20}@\c{4,8}.com"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="restrictedCena">
+        <xs:restriction base="xs:positiveInteger">
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:complexType name="cena" >
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="tip" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="euro"/>
+                            <xs:enumeration value="dinar"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="artikal">
+        <xs:sequence>
+            <xs:element name="naziv">
+                <xs:complexType >
+                    <xs:simpleContent>
+                        <xs:extension base="nazivRes">
+                            <xs:attribute name="sifra" default="privremena">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:ID">
+
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="datumIzrade">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dan">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:pattern value="[1-9]|[1-2][0-9]|3[0-1]"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="mesec">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:pattern value="[1-9]|1[0-2]"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="godina"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="cena" type="cena">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="restrictedCena">
+                            <xs:attribute name="tip" default="dinar">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:integer">
+                                        <xs:enumeration value="dinar" />
+                                        <xs:enumeration value="euro" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="kompanijaProdavca">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="imeKompanije"></xs:element>
+                        <xs:element name="adresa" minOccurs="1" maxOccurs="unbounded"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="email" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="emailRes">
+                            <xs:attribute name="tip" >
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="privatni" />
+                                        <xs:enumeration value="sluzbeni" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+<xs:element name="artikal" type="artikal">
+
+</xs:element>
+
+
+
+</xs:schema>

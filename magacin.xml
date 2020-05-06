@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE artikal SYSTEM "magacin.dtd">
-<artikal>
-    <naziv sifra="">
+<artikal xmlns="http://www.w3schools.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.w3schools.com magacin.xsd">
+    <naziv sifra="s54" >
 
     </naziv>
 <datumIzrade>
@@ -15,7 +17,7 @@
 
     </godina>
 </datumIzrade>
-    <cena tip="">
+    <cena tip="dinar">
 
     </cena>
     <kompanijaProdavca>
@@ -26,7 +28,7 @@
 
         </adresa>
     </kompanijaProdavca>
-    <email tip="">
+    <email tip="sluzbeni">
 
     </email>
 </artikal>
